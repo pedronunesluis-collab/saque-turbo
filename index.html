@@ -1,0 +1,260 @@
+<!DOCTYPE html><html lang="pt"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saque Prioritário</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #FFFFFF; /* 🔥 fundo totalmente branco */
+}
+
+/* 🔝 BANNER FIXO */
+.banner {
+    width: 100%;
+    background: #E60000;
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 14px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+/* Espaço do banner */
+.spacer {
+    height: 50px;
+}
+
+.container {
+    max-width: 480px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* TITULO */
+h1 {
+    color: #E60000;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* TIMER */
+.timer {
+    font-size: 28px;
+    font-weight: bold;
+    color: #FFC300;
+    background: #000;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+/* BOX */
+.box {
+    background: #FFF3E0;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    text-align: left;
+    border-left: 5px solid #FFC300;
+}
+
+/* DESTAQUE */
+.highlight {
+    color: #E60000;
+    font-weight: bold;
+}
+
+/* BOTÃO */
+.btn {
+    display: block;
+    background: #E60000;
+    color: #fff;
+    padding: 16px;
+    font-size: 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-top: 25px;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(230, 0, 0, 0.6);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+.small {
+    font-size: 13px;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* RESPONSIVO */
+@media (min-width: 768px) {
+    .container {
+        max-width: 550px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .btn {
+        font-size: 20px;
+        padding: 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔥 BANNER -->
+<div class="banner">
+⚡ 97 pessoas estão ativando o SAQUE TURBO neste momento
+</div>
+
+<div class="spacer"></div>
+
+<div class="container">
+
+<h1>⏳ ESPERA... NÃO FECHE!</h1>
+
+<p><b>Saque solicitado com sucesso.</b></p>
+
+<div class="timer" id="countdown">02:00</div>
+
+<div class="box">
+<p>⚠️ Detectamos <span class="highlight">alto volume de pedidos</span> no sistema.</p>
+<p>Sem prioridade, o SAQUE pode demorar até <span class="highlight">72 horas</span>.</p>
+</div>
+
+<div class="box">
+<p><b>🚀 ATIVE O SAQUE KWIK</b></p>
+<p>✔ Receba em até <span class="highlight">5 segundos</span></p>
+<p>✔ Atendimento prioritário</p>
+<p>✔ Transferência via Sistema KWiK</p>
+<p>✔ Liberação imediata do SAQUE</p>
+</div>
+
+<a href="https://pay.bicaju.com/09ed7be7-6ad8-4afc-ac8c-3e5468723e50" target="_blank" class="btn">
+🚀 ATIVAR SAQUE KWIK AGORA
+</a>
+
+<p class="small">Oferta válida apenas nesta sessão.</p>
+
+</div>
+
+<script>
+// ⏳ TIMER
+let time = 120;
+let countdown = document.getElementById("countdown");
+
+setInterval(() => {
+    let m = Math.floor(time / 60);
+    let s = time % 60;
+
+    countdown.innerHTML = 
+        (m < 10 ? "0"+m : m) + ":" + 
+        (s < 10 ? "0"+s : s);
+
+    time--;
+
+    if (time < 0) countdown.innerHTML = "00:00";
+}, 1000);
+
+// 📳 Vibração no clique (mobile)
+document.querySelector(".btn").addEventListener("click", function() {
+    if (navigator.vibrate) {
+        navigator.vibrate([100, 50, 100]);
+    }
+});
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notificações de Compras</title>
+
+<script src="js/notiflix-aio-2.6.0.min.js"></script>
+
+<script>
+    var position = "left-bottom";
+    var color = "verde";
+    var animation = "from-left";
+    var product_name = "";
+    var timeout = 4000;
+    var type_name = "fem";
+    var msg_final = "";
+
+    var names_fem = [
+        'João', 'Manuel', 'Paulo', 'Carlos', 'Pedro', 'José', 'António',
+        'Filipe', 'Domingos', 'Miguel', 'Mateus', 'Daniel', 'Jorge',
+        'Adilson', 'Edson', 'Emanuel', 'Geraldo', 'Luís', 'Fernando',
+        'Kazumbula', 'Osvaldo', 'Valter', 'Maurício', 'Tomás', 'César',
+        'Ana', 'Antónia', 'Adriana', 'Juliana', 'Márcia', 'Fernanda',
+        'Patrícia', 'Camila', 'Bruna', 'Jéssica', 'Luciana', 'Mariana',
+        'Vitória', 'Cláudia'
+    ];
+
+    var option = {
+        position: position,
+        cssAnimationStyle: animation,
+        plainText: false,
+        timeout: timeout
+    };
+
+    function gerarValor() {
+        // Gera valor entre 100000 e 160000
+        return Math.floor(Math.random() * (160000 - 100000 + 1)) + 100000;
+    }
+
+    function formatarKz(valor) {
+        return valor.toLocaleString('pt-PT') + " kz";
+    }
+
+    function show_notification() {
+        var nome = names_fem[Math.floor(Math.random() * names_fem.length)];
+        var valor = formatarKz(gerarValor());
+
+        msg_final = "<strong>" + nome + "</strong> sacou agora " + valor + " " + product_name;
+
+        if (color == "verde") {
+            Notiflix.Notify.Success(msg_final, option);
+        }
+
+        if (color == "azul") {
+            Notiflix.Notify.Info(msg_final, option);
+        }
+
+        if (color == "vermelho") {
+            Notiflix.Notify.Failure(msg_final, option);
+        }
+
+        if (color == "amarelo") {
+            Notiflix.Notify.Warning(msg_final, option);
+        }
+
+        setTimeout(show_notification, 10000);
+    }
+
+    // Primeira notificação imediata
+    setTimeout(show_notification, 1000);
+</script>
+
+
+
+</body></html>
